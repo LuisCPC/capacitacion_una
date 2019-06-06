@@ -97,91 +97,65 @@ class Contacts extends Component {
     );
   };
 
-  renderFooter2 = () => {
-    
-    var footer = (
-  
-        this.state.loadMoreOk && this.state.customerList.length>0 ?
-                                
-        <TouchableOpacity  
-            style={{
-            margin: 5,
-            alignItems: 'center',        
-            borderRadius: 30,
-            paddingVertical: 5,
-            backgroundColor: '#273576',
-            borderWidth: 1,
-            borderColor: '#273576',
-            elevation: 4,
-            shadowOffset: {
-                width: 2,
-                height: 2
-            },
-            shadowColor: 'black',
-            shadowOpacity: 0.5
-        }}
-            onPress={() => {
-                this.setState({ loading: true})
-                this.handleLoadMore() 
-                
-            }}>
-            <Text style={{color:"white"}}>
-                ver más
-            </Text>
-        </TouchableOpacity> 
-        :
-        null
-  
-    );
-  
-    return footer;
-  
-};
 
+  render(){
+    return(
 
-    render(){
-        return(
-            <Container> 
-                <Content>
-                    <Separator bordered>
-                        <Text>Contacts</Text>
-                    </Separator>
-                    <List> 
-                        <FlatList
-                            data={this.state.data}
-                            renderItem={({ item }) => (
-                             
-                                <ListItem thumbnail>
-                                    <Left>
-                                        <Thumbnail square source={{ uri: item.picture.thumbnail }} />
-                                    </Left>
-                                    <Body>
-                                        <Text>{`${item.name.first} ${item.name.last}`}</Text>
-                                        <Text note numberOfLines={1}>Its time to build a difference . .</Text>
-                                    </Body>
-                                    <Right>
-                                        <Button transparent>
-                                        <Text>View</Text>
-                                        </Button>
-                                    </Right>
-                                </ListItem>
+      <Container>
+        <StatusBar
+          backgroundColor={colors.statusBar}
+        />
+        <Header searchBar hasTabs style={{ backgroundColor: backColor }} androidStatusBarColor={colors.statusBar} iosBarStyle='default'>
+          <Left>
+              <Button transparent onPress={() => this.props.openDrawer()}>
+                  <Icon name='menu' />
+              </Button>
+          </Left> 
+          <Body></Body>
 
-                            )}
-                            //keyExtractor={item => item.email}
-                            ItemSeparatorComponent={this.renderSeparator}
-                            //ListHeaderComponent={this.renderHeader}
-                            ListFooterComponent={this.renderFooter}
-                            onRefresh={this.handleRefresh}
-                            refreshing={this.state.refreshing}
-                            onEndReached={this.handleLoadMore}
-                            onEndReachedThreshold={50}
-                            />
-                    </List>
+          <Right/>
+        </Header>
+          
+        <Content>
+          <Separator bordered>
+            <Text>Contacts</Text>
+          </Separator>
+          <List> 
+              <FlatList
+                  data={this.state.data}
+                  renderItem={({ item }) => (
+                    
+                      <ListItem thumbnail>
+                          <Left>
+                              <Thumbnail square source={{ uri: item.picture.thumbnail }} />
+                          </Left>
+                          <Body>
+                              <Text>{`${item.name.first} ${item.name.last}`}</Text>
+                              <Text note numberOfLines={1}>Its time to build a difference . .</Text>
+                          </Body>
+                          <Right>
+                            <Button transparent>
+                              <Text>View</Text>
+                            </Button>
+                          </Right>
+                      </ListItem>
 
-                </Content>
-            </Container>
-        ); 
-    }
+                  )}
+                  //keyExtractor={item => item.email}
+                  ItemSeparatorComponent={this.renderSeparator}
+                  //ListHeaderComponent={this.renderHeader}
+                  ListFooterComponent={this.renderFooter}
+                  onRefresh={this.handleRefresh}
+                  refreshing={this.state.refreshing}
+                  onEndReached={this.handleLoadMore}
+                  onEndReachedThreshold={50}
+                  />
+          </List>
+
+      </Content>
+    </Container>
+    ); 
+  }
 
 }
 

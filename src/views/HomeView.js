@@ -8,8 +8,14 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  StatusBar,
-} from 'react-native';
+  StatusBar, 
+  Image,
+  Dimensions
+} from 'react-native'
+
+import Swiper from 'react-native-swiper'
+
+const {width} = Dimensions.get('window')
 
 import { Actions, NavigationBar } from 'react-native-router-flux'
 
@@ -18,7 +24,10 @@ import { Actions, NavigationBar } from 'react-native-router-flux'
 import colors from '../constant/colors'  
  
  
-
+const Slider = props => ( <View style={styles.container}>
+  <Image style={styles.image} source={props.uri}/>
+</View>
+)
 
 export default class HomeView extends Component {
   constructor(props) {
@@ -28,6 +37,11 @@ export default class HomeView extends Component {
       spinner:false,
       searVisible:false,
       search:'', 
+      imagesSlider: [
+        require('../img/1.jpg'),
+        require('../img/2.jpg'),
+        require('../img/3.jpg')
+    ]
     }
   }
 
@@ -56,7 +70,20 @@ export default class HomeView extends Component {
             <Right/>
         </Header>
         <Content>
-           
+          <View style={{flex:1}}>
+            <Swiper
+                autoplay
+                height={240}
+            >
+            {
+                this.state.imagesSlider.map((item, i) => <Slider 
+                    uri={item}
+                    key={i}
+                />)
+            }
+
+            </Swiper>
+          </View>
         </Content>
          
       </Container>
@@ -76,5 +103,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
+  }, 
+  image: {
+    flex: 1,
+    width
+  }
 });

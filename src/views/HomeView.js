@@ -8,8 +8,7 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  StatusBar, 
-  Image,
+  StatusBar,  
   Dimensions
 } from 'react-native'
 

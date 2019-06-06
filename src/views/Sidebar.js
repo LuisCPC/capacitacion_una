@@ -37,7 +37,7 @@ export default class Sidebar extends Component {
               </Body>
             </ListItem>
 
-            <ListItem icon onPress={''}>
+            <ListItem icon onPress={() => Actions.contacts()}>
               <Left>
                 <Icon ios="ios-contacts" android="md-contacts" />
               </Left>

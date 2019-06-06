@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { View, FlatList, ActivityIndicator } from "react-native";
-import { Container, Header, Content, List, ListItem,Separator, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
-
+import { View, FlatList, ActivityIndicator,StatusBar } from "react-native";
+import { Container, Header, Icon,Content, List, ListItem,Separator, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
+import colors from '../constant/colors'  
+import { Actions } from "react-native-router-flux";
 class Contacts extends Component {
   constructor(props) {
     super(props);
@@ -99,6 +100,7 @@ class Contacts extends Component {
 
 
   render(){
+    let backColor = colors.nadvar
     return(
 
       <Container>
@@ -107,8 +109,8 @@ class Contacts extends Component {
         />
         <Header searchBar hasTabs style={{ backgroundColor: backColor }} androidStatusBarColor={colors.statusBar} iosBarStyle='default'>
           <Left>
-              <Button transparent onPress={() => this.props.openDrawer()}>
-                  <Icon name='menu' />
+              <Button transparent onPress={() => Actions.pop()}>
+                  <Icon name='arrow-left' />
               </Button>
           </Left> 
           <Body></Body>

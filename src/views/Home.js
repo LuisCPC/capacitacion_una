@@ -18,7 +18,7 @@ export default class Home extends Component {
 
 
     render() {
-        return (
+        return ( 
         <Drawer
             ref={(ref) => { this.drawer = ref; }}
             content={<Sidebar />}

@@ -64,7 +64,7 @@ class App extends Component {
                     <Scene key="root">
                      
                         <Scene key="home" initial={true} component={Home} type="reset" hideNavBar/>
-                        {/*<Scene key="cart" component={Cart} hideNavBar/>*/} 
+                        <Scene key="contacts" component={Contacts} hideNavBar/>
                         
                     </Scene>
                 </Router> 

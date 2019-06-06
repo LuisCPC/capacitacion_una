@@ -3,6 +3,9 @@ import { View, FlatList, ActivityIndicator,StatusBar } from "react-native";
 import { Container, Header, Icon,Content, List, ListItem,Separator, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
 import colors from '../constant/colors'  
 import { Actions } from "react-native-router-flux";
+//import Modals from 'react-native-modal'; 
+//import modals from '../styles/default/modals';
+
 class Contacts extends Component {
   constructor(props) {
     super(props);
